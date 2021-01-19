@@ -20,7 +20,7 @@
       "name": "VAR_PROJ",
       "type": "constant",
       "label": "proj",
-      "value": "my_project",
+      "value": "my_proj",
       "description": ""
     },
     {
@@ -33,35 +33,35 @@
     {
       "name": "VAR_SERVER1",
       "type": "constant",
-      "label": "app",
+      "label": "server1",
       "value": "",
       "description": ""
     },
     {
       "name": "VAR_SERVER2",
       "type": "constant",
-      "label": "dat1",
+      "label": "server2",
       "value": "",
       "description": ""
     },
     {
       "name": "VAR_SERVER3",
       "type": "constant",
-      "label": "dat2",
+      "label": "server3",
       "value": "",
       "description": ""
     },
     {
       "name": "VAR_SERVER4",
       "type": "constant",
-      "label": "sto1",
+      "label": "server4",
       "value": "",
       "description": ""
     },
     {
       "name": "VAR_SERVER5",
       "type": "constant",
-      "label": "sto2",
+      "label": "server5",
       "value": "",
       "description": ""
     }
@@ -139,7 +139,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1609947457174,
+  "iteration": 1611049566266,
   "links": [],
   "panels": [
     {
@@ -678,7 +678,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 12,
         "x": 0,
         "y": 4
@@ -801,6 +801,68 @@
     },
     {
       "datasource": "${DS_PROMETHEUS}",
+      "description": "Number of registred workers",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 0,
+        "y": 9
+      },
+      "id": 72,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "vitam_processing_worker_registered_total",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Total of regisetred workers",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Workers",
+      "type": "stat"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -829,8 +891,8 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 0,
-        "y": 8
+        "x": 3,
+        "y": 9
       },
       "id": 97,
       "options": {
@@ -890,10 +952,10 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 3,
-        "y": 8
+        "x": 6,
+        "y": 9
       },
-      "id": 96,
+      "id": 104,
       "options": {
         "orientation": "auto",
         "reduceOptions": {
@@ -951,8 +1013,8 @@
       "gridPos": {
         "h": 3,
         "w": 3,
-        "x": 6,
-        "y": 8
+        "x": 9,
+        "y": 9
       },
       "id": 98,
       "options": {
@@ -984,17 +1046,25 @@
     },
     {
       "datasource": "${DS_PROMETHEUS}",
-      "description": "Number of registred workers",
       "fieldConfig": {
         "defaults": {
           "custom": {},
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-purple",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 1
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 2
               }
             ]
           }
@@ -1002,14 +1072,14 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 3,
-        "x": 9,
-        "y": 8
+        "x": 3,
+        "y": 12
       },
-      "id": 72,
+      "id": 96,
       "options": {
-        "colorMode": "value",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -1024,16 +1094,78 @@
       "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "vitam_processing_worker_registered_total",
-          "instant": false,
+          "expr": "vitam_processing_workflow_operation_total{status=\"FATAL\",state=\"PAUSE\",workflow=\"INGEST\"}",
+          "instant": true,
           "interval": "",
-          "legendFormat": "Total of regisetred workers",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Workers",
+      "title": "Pause FATAL ingests",
+      "type": "stat"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 1
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 12
+      },
+      "id": 105,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "vitam_processing_workflow_operation_total{status=\"FATAL\",state=\"RUNNING\",workflow=\"INGEST\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Running FATAL ingests",
       "type": "stat"
     },
     {
@@ -1054,7 +1186,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 92,
@@ -1197,101 +1329,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Completed workflow KO",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 18
-      },
-      "hiddenSeries": false,
-      "id": 90,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by(tenant, strategy) (rate(vitam_responses_size_bytes_sum{job=\"vitam-storage-offer-default\"}[5m]) /rate(vitam_responses_size_bytes_count{job=\"vitam-storage-offer-default\"}[5m])) / 1024",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Rate 5 minutes of read data from the offer in Kilo Bytes per tenant and strategy",
+      "title": "Completed workflows KO",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1423,196 +1461,6 @@
       }
     },
     {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 85
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 0,
-        "y": 26
-      },
-      "id": 64,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "",
-          "url": ""
-        }
-      ],
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "node_load1{instance=~\"$server0.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Load",
-          "refId": "A"
-        },
-        {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server0.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server0.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server0.*\"}) by (cpu))",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Load",
-          "refId": "B"
-        },
-        {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server0.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server0.*\"})",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Mem %",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "ACC server",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 85
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 6,
-        "y": 26
-      },
-      "id": 99,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "",
-          "url": ""
-        }
-      ],
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "node_load1{instance=~\"$server1.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Load",
-          "refId": "A"
-        },
-        {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server1.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server1.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server1.*\"}) by (cpu))",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Load",
-          "refId": "B"
-        },
-        {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server1.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server1.*\"})",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Mem %",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "APP server",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1626,6 +1474,102 @@
       },
       "fill": 1,
       "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 90,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by(tenant, strategy) (rate(vitam_responses_size_bytes_sum{job=\"vitam-storage-offer-default\"}[5m]) /rate(vitam_responses_size_bytes_count{job=\"vitam-storage-offer-default\"}[5m])) / 1024",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Rate 5 minutes of read data from the offer in Kilo Bytes per tenant and strategy",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "vitam_workflow_operation_total{status=FATAL}": "dark-red"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 3,
       "gridPos": {
         "h": 7,
         "w": 12,
@@ -1644,7 +1588,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 1,
+      "linewidth": 2,
       "nullPointMode": "null",
       "options": {
         "dataLinks": []
@@ -1751,6 +1695,196 @@
         "x": 0,
         "y": 29
       },
+      "id": 64,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$server0.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server0.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server0.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server0.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server0.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server0.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "ACC server",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 29
+      },
+      "id": 99,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$server1.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server1.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server1.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server1.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server1.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server1.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "APP server",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 32
+      },
       "id": 100,
       "links": [
         {
@@ -1844,7 +1978,7 @@
         "h": 3,
         "w": 6,
         "x": 6,
-        "y": 29
+        "y": 32
       },
       "id": 101,
       "links": [
@@ -1939,7 +2073,7 @@
         "h": 3,
         "w": 6,
         "x": 0,
-        "y": 32
+        "y": 35
       },
       "id": 102,
       "links": [
@@ -2034,7 +2168,7 @@
         "h": 3,
         "w": 6,
         "x": 6,
-        "y": 32
+        "y": 35
       },
       "id": 103,
       "links": [
@@ -2094,6 +2228,67 @@
       "type": "gauge"
     },
     {
+      "datasource": "${DS_PROMETHEUS}",
+      "description": "Le temps d'execution de chaque step du workflow INGEST",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 130
+              },
+              {
+                "color": "dark-red",
+                "value": 250
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 35
+      },
+      "id": 80,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": false
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "rate(vitam_processing_workflow_step_execution_duration_seconds_sum{workflow=\"INGEST\"}[5m]) / rate(vitam_processing_workflow_step_execution_duration_seconds_count{workflow=\"INGEST\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{workflow}}:{{step_name}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Ingest step execution duration mean",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
       "aliasColors": {
         "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.102.190:19100\",job=\"vitam-ITREC-via-consul\",mountpoint=\"/\",node=\"vitam-env-itrec-storage-1-01\",port=\"19100\"}": "dark-purple",
         "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.149:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-fsoffer-01\",port=\"19100\"}": "semi-dark-purple",
@@ -2116,7 +2311,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 41,
@@ -2227,7 +2422,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 17,
@@ -2319,67 +2514,6 @@
     },
     {
       "datasource": "${DS_PROMETHEUS}",
-      "description": "Le temps d'execution de chaque step du workflow INGEST",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-purple",
-                "value": null
-              },
-              {
-                "color": "dark-orange",
-                "value": 130
-              },
-              {
-                "color": "dark-red",
-                "value": 250
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 35
-      },
-      "id": 80,
-      "options": {
-        "displayMode": "gradient",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": false
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "rate(vitam_processing_workflow_step_execution_duration_seconds_sum{workflow=\"INGEST\"}[5m]) / rate(vitam_processing_workflow_step_execution_duration_seconds_count{workflow=\"INGEST\"}[5m])",
-          "interval": "",
-          "legendFormat": "{{workflow}}:{{step_name}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Ingest step execution duration mean",
-      "transparent": true,
-      "type": "bargauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2417,7 +2551,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 41
+        "y": 44
       },
       "id": 44,
       "options": {
@@ -2462,10 +2596,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
+        "h": 7,
         "w": 12,
         "x": 12,
-        "y": 43
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 82,
@@ -2571,7 +2705,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 48
+        "y": 51
       },
       "id": 24,
       "interval": "",
@@ -2635,7 +2769,7 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 48
+        "y": 51
       },
       "id": 26,
       "interval": "",
@@ -2700,7 +2834,7 @@
         "h": 4,
         "w": 4,
         "x": 8,
-        "y": 48
+        "y": 51
       },
       "id": 25,
       "links": [],
@@ -2734,97 +2868,63 @@
       "type": "gauge"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 50
+              },
+              {
+                "color": "dark-red",
+                "value": 90
+              }
+            ]
+          }
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 12,
         "y": 51
       },
-      "hiddenSeries": false,
       "id": 84,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
       "options": {
-        "dataLinks": []
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
       },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "rate(vitam_worker_task_idle_duration_in_queue_seconds_sum{instance=~\".*$proj.*\"\r, workflow=\"ingest\"}[5m]) / rate(vitam_worker_task_idle_duration_in_queue_seconds_count{instance=~\".*$proj.*\"\r, workflow=\"ingest\"}[5m])",
+          "expr": "rate(vitam_processing_worker_task_idle_duration_in_queue_seconds_sum{workflow=\"INGEST\"}[5m]) / rate(vitam_processing_worker_task_idle_duration_in_queue_seconds_count{workflow=\"INGEST\"}[5m])",
+          "interval": "",
           "legendFormat": "{{worker_family}}:{{step_name}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Temps moyens d'attente des tâches d'ingest dans la queue dans le distributeur",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": "Temps moyen",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "bargauge"
     },
     {
       "cacheTimeout": null,
@@ -2862,7 +2962,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 52
+        "y": 55
       },
       "id": 27,
       "links": [],
@@ -2925,7 +3025,7 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 52
+        "y": 55
       },
       "id": 31,
       "interval": null,
@@ -3028,9 +3128,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(_offer_v1__objects__type___objectId:___:PUT:application_octet_stream:application_json:timer{instance=~\".*$proj.*\"\r, job=~\".*$proj-offers\",quantile=\"0.999\"}[5m]) * 1024",
+          "expr": "rate(_offer_v1__objects__type___objectId:___:PUT:application_octet_stream:application_json:timer{job=~\".*\",quantile=\"0.999\"}[5m]) * 1024",
           "format": "time_series",
           "hide": false,
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -3122,7 +3224,8 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(vitam_worker_task_in_queue_total{instance=~\".*$proj.*\"\r}[5m])",
+          "expr": "rate(vitam_processing_worker_task_in_queue_total[5m])",
+          "interval": "",
           "legendFormat": "rate 5m task in queue{ worker_family: {{worker_family}}}",
           "refId": "A"
         }
@@ -3179,6 +3282,7 @@
           "mappings": [],
           "max": 100,
           "min": 0,
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -3217,19 +3321,25 @@
       "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "vitam_workflow_operation_total{instance=~\".*$proj.*\", state=\"completed\",status=\"ko\",workflow=\"ingest\"}",
+          "expr": "vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"KO\",workflow=\"INGEST\"}",
           "instant": true,
+          "interval": "",
+          "intervalFactor": 10,
           "legendFormat": "INGEST completed KO",
           "refId": "A"
         },
         {
-          "expr": "vitam_workflow_operation_total{instance=~\".*$proj.*\",state=\"completed\",status=\"ko\",workflow=\"mass_update\"}",
+          "expr": "vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"KO\",workflow=\"MASS_UPDATE\"}",
           "instant": true,
+          "interval": "",
           "legendFormat": "MASS_UPDATE completed KO",
           "refId": "B"
         },
         {
-          "expr": "vitam_workflow_operation_total{instance=~\".*$proj.*\",state=\"pause\",status=\"fatal\",workflow=\"ingest\"}",
+          "expr": "vitam_processing_workflow_operation_total{state=\"PAUSE\",status=\"FATAL\",workflow=\"INGEST\"}",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "INGEST pause FATAL",
           "refId": "C"
         }
@@ -3500,5 +3610,5 @@
   "timezone": "",
   "title": "VITAM standard dashboard",
   "uid": "testitrec",
-  "version": 8
+  "version": 27
 }
