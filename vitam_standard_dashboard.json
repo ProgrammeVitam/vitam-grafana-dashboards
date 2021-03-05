@@ -20,49 +20,70 @@
       "name": "VAR_PROJ",
       "type": "constant",
       "label": "proj",
-      "value": "my_proj",
+      "value": "mon_projet",
       "description": ""
     },
     {
-      "name": "VAR_SERVER0",
+      "name": "VAR_ACC",
       "type": "constant",
       "label": "acc",
-      "value": "",
+      "value": "ip_acc1",
       "description": ""
     },
     {
-      "name": "VAR_SERVER1",
+      "name": "VAR_APP1",
       "type": "constant",
-      "label": "server1",
-      "value": "",
+      "label": "app1",
+      "value": "ip_app1",
       "description": ""
     },
     {
-      "name": "VAR_SERVER2",
+      "name": "VAR_APP2",
       "type": "constant",
-      "label": "server2",
-      "value": "",
+      "label": "app2",
+      "value": "ip_app2",
       "description": ""
     },
     {
-      "name": "VAR_SERVER3",
+      "name": "VAR_DAT1",
       "type": "constant",
-      "label": "server3",
-      "value": "",
+      "label": "dat1",
+      "value": "ip_dat1",
       "description": ""
     },
     {
-      "name": "VAR_SERVER4",
+      "name": "VAR_DAT2",
       "type": "constant",
-      "label": "server4",
-      "value": "",
+      "label": "dat2",
+      "value": "ip_dat2",
       "description": ""
     },
     {
-      "name": "VAR_SERVER5",
+      "name": "VAR_EXP",
       "type": "constant",
-      "label": "server5",
-      "value": "",
+      "label": "exp",
+      "value": "ip_exp",
+      "description": ""
+    },
+    {
+      "name": "VAR_STO1",
+      "type": "constant",
+      "label": "sto1",
+      "value": "ip_sto1",
+      "description": ""
+    },
+    {
+      "name": "VAR_STO2",
+      "type": "constant",
+      "label": "sto2",
+      "value": "ip_sto2",
+      "description": ""
+    },
+    {
+      "name": "VAR_WORKSPACE",
+      "type": "constant",
+      "label": "workspace",
+      "value": "ip_workspace",
       "description": ""
     }
   ],
@@ -139,7 +160,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1611049566266,
+  "iteration": 1614931596038,
   "links": [],
   "panels": [
     {
@@ -383,6 +404,84 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "CPU Load warn",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS_ALERTMANAGER}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 0
+      },
+      "id": 114,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "annotations": false,
+          "expr": "alertname=\"OutOfDiskSpace\",severity=\"warning\"",
+          "labelSelector": "*",
+          "legendFormat": "",
+          "refId": "A",
+          "target": "Query",
+          "type": "timeserie"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disk Space warn",
       "type": "stat"
     },
     {
@@ -651,6 +750,84 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "CPU Load crit",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS_ALERTMANAGER}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [
+            {
+              "id": 0,
+              "op": "=",
+              "text": "N/A",
+              "type": 1,
+              "value": "null"
+            }
+          ],
+          "nullValueMode": "connected",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#299c46",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 9,
+        "y": 2
+      },
+      "id": 115,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "background",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ]
+        },
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "annotations": false,
+          "expr": "alertname=\"OutOfDiskSpace\",severity=\"critical\"",
+          "labelSelector": "*",
+          "legendFormat": "",
+          "refId": "A",
+          "target": "Query",
+          "type": "timeserie"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Disk Space crit",
       "type": "stat"
     },
     {
@@ -1050,6 +1227,66 @@
         "defaults": {
           "custom": {},
           "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 75
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 12
+      },
+      "id": 112,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "100 - (node_filesystem_avail_bytes{instance=~\"$workspace.*\",mountpoint=\"/vitam\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/vitam\",fstype!=\"rootfs\"}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Workspace disk usage",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
           "noValue": "0",
           "thresholds": {
             "mode": "absolute",
@@ -1169,98 +1406,149 @@
       "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": "${DS_PROMETHEUS}",
+      "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 1
+              },
+              {
+                "color": "dark-red",
+                "value": 2
+              }
+            ]
+          }
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
+        "h": 2,
+        "w": 4,
+        "x": 3,
         "y": 14
       },
-      "hiddenSeries": false,
-      "id": 92,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
+      "id": 109,
       "options": {
-        "dataLinks": []
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
       },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "sum by(tenant, strategy) (rate(vitam_requests_size_bytes_sum{job=\"vitam-storage-offer-default\"}[5m]) /rate(vitam_requests_size_bytes_count{job=\"vitam-storage-offer-default\"}[5m])) / 1024",
+          "expr": "max_over_time(vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"FATAL\",workflow=\"INGEST\"}[24h])",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "Rate of 5 minutes of write data in the offer in Kilo Bytes per tenant and strategy",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+      "title": "Max ingests FATAL on 24H",
+      "type": "stat"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"172.18.110.230:28203\", job=\"vitam-processing\", state=\"COMPLETED\", status=\"OK\", workflow=\"TRACEABILITY\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ok"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"172.18.110.230:28203\", job=\"vitam-processing\", state=\"COMPLETED\", status=\"WARNING\", workflow=\"TRACEABILITY\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Warning"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 7,
+        "y": 14
+      },
+      "id": 110,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "expr": "max_over_time (vitam_processing_workflow_operation_total{state=\"COMPLETED\",workflow=\"TRACEABILITY\"}[24h])",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Max completed Traceabiliy on 24H",
+      "type": "stat"
     },
     {
       "aliasColors": {
@@ -1330,6 +1618,178 @@
       "timeRegions": [],
       "timeShift": null,
       "title": "Completed workflows KO",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 70,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"KO\",workflow=\"INGEST\"}",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 10,
+          "legendFormat": "INGEST completed KO",
+          "refId": "A"
+        },
+        {
+          "expr": "vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"KO\",workflow=\"MASS_UPDATE\"}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "MASS_UPDATE completed KO",
+          "refId": "B"
+        },
+        {
+          "expr": "vitam_processing_workflow_operation_total{state=\"PAUSE\",status=\"FATAL\",workflow=\"INGEST\"}",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "INGEST pause FATAL",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Workflow KO et Pause Fatal",
+      "type": "bargauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 19
+      },
+      "hiddenSeries": false,
+      "id": 92,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum by(tenant, strategy) (rate(vitam_requests_size_bytes_sum{job=\"vitam-storage-offer-default\"}[5m]) /rate(vitam_requests_size_bytes_count{job=\"vitam-storage-offer-default\"}[5m])) / 1024",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Rate of 5 minutes of write data in the offer in Kilo Bytes per tenant and strategy",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1478,7 +1938,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 90,
@@ -1693,7 +2153,7 @@
         "h": 3,
         "w": 6,
         "x": 0,
-        "y": 29
+        "y": 34
       },
       "id": 64,
       "links": [
@@ -1718,7 +2178,7 @@
       "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "node_load1{instance=~\"$server0.*\"}",
+          "expr": "node_load1{instance=~\"$acc.*\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1727,7 +2187,7 @@
           "refId": "A"
         },
         {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server0.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server0.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server0.*\"}) by (cpu))",
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$acc.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$acc.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$acc.*\"}) by (cpu))",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -1737,13 +2197,19 @@
           "refId": "B"
         },
         {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server0.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server0.*\"})",
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$acc.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$acc.*\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Mem %",
           "refId": "C"
+        },
+        {
+          "expr": "100 - (node_filesystem_avail_bytes{instance=~\"$acc.*\",mountpoint=\"/vitam\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{instance=~\"$acc.*\",mountpoint=\"/vitam\",fstype!=\"rootfs\"}",
+          "interval": "",
+          "legendFormat": "/vitam",
+          "refId": "D"
         }
       ],
       "timeFrom": null,
@@ -1788,9 +2254,9 @@
         "h": 3,
         "w": 6,
         "x": 6,
-        "y": 29
+        "y": 34
       },
-      "id": 99,
+      "id": 113,
       "links": [
         {
           "targetBlank": true,
@@ -1813,7 +2279,7 @@
       "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "node_load1{instance=~\"$server1.*\"}",
+          "expr": "node_load1{instance=~\"$exp.*\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1822,7 +2288,7 @@
           "refId": "A"
         },
         {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server1.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server1.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server1.*\"}) by (cpu))",
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$exp.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$exp.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$exp.*\"}) by (cpu))",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -1832,398 +2298,24 @@
           "refId": "B"
         },
         {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server1.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server1.*\"})",
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$exp.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$exp.*\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Mem %",
           "refId": "C"
+        },
+        {
+          "expr": "100 - (node_filesystem_avail_bytes{instance=~\"$exp.*\",mountpoint=\"/vitam\",fstype!=\"rootfs\"} * 100) / node_filesystem_size_bytes{instance=~\"$exp.*\",mountpoint=\"/vitam\",fstype!=\"rootfs\"}",
+          "interval": "",
+          "legendFormat": "/vitam",
+          "refId": "D"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "APP server",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 85
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 0,
-        "y": 32
-      },
-      "id": 100,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "",
-          "url": ""
-        }
-      ],
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "node_load1{instance=~\"$server2.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Load",
-          "refId": "A"
-        },
-        {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server2.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server2.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server2.*\"}) by (cpu))",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Load",
-          "refId": "B"
-        },
-        {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server2.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server2.*\"})",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Mem %",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "DAT 1 server (elk)",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 85
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 6,
-        "y": 32
-      },
-      "id": 101,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "",
-          "url": ""
-        }
-      ],
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "node_load1{instance=~\"$server3.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Load",
-          "refId": "A"
-        },
-        {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server3.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server3.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server3.*\"}) by (cpu))",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Load",
-          "refId": "B"
-        },
-        {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server3.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server3.*\"})",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Mem %",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "DAT 2 server (mongo)",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 85
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 0,
-        "y": 35
-      },
-      "id": 102,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "",
-          "url": ""
-        }
-      ],
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "node_load1{instance=~\"$server4.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Load",
-          "refId": "A"
-        },
-        {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server4.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server4.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server4.*\"}) by (cpu))",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Load",
-          "refId": "B"
-        },
-        {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server4.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server4.*\"})",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Mem %",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "STO1 server",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 85
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 6,
-        "y": 35
-      },
-      "id": 103,
-      "links": [
-        {
-          "targetBlank": true,
-          "title": "",
-          "url": ""
-        }
-      ],
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "node_load1{instance=~\"$server5.*\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Load",
-          "refId": "A"
-        },
-        {
-          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$server5.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$server5.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$server5.*\"}) by (cpu))",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Load",
-          "refId": "B"
-        },
-        {
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$server5.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$server5.*\"})",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "Mem %",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "STO2 server",
+      "title": "EXP server",
       "transparent": true,
       "type": "gauge"
     },
@@ -2289,230 +2381,7 @@
       "type": "bargauge"
     },
     {
-      "aliasColors": {
-        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.102.190:19100\",job=\"vitam-ITREC-via-consul\",mountpoint=\"/\",node=\"vitam-env-itrec-storage-1-01\",port=\"19100\"}": "dark-purple",
-        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.149:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-fsoffer-01\",port=\"19100\"}": "semi-dark-purple",
-        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.150:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-mongoffer-1-01\",port=\"19100\"}": "semi-dark-purple"
-      },
-      "bars": false,
       "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 7,
-      "fillGradient": 8,
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 0,
-        "y": 38
-      },
-      "hiddenSeries": false,
-      "id": 41,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pluginVersion": "6.2.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "node_filesystem_avail_bytes{instance=~\"$server4.*\",device!~'rootfs',device!~'tmpfs'}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 5000000000,
-          "yaxis": "left"
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Disk space available $server3",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "decimals": null,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {
-        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.149:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-fsoffer-01\",port=\"19100\"}": "semi-dark-green"
-      },
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 6,
-      "fillGradient": 6,
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 6,
-        "y": 38
-      },
-      "hiddenSeries": false,
-      "id": 17,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pluginVersion": "6.2.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "node_filesystem_avail_bytes{instance=~\"$server5.*\",device!~'rootfs',device!~'tmpfs'}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "lt",
-          "value": 5000000000,
-          "yaxis": "left"
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Disk space available $server4",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "decimals": null,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
@@ -2521,26 +2390,22 @@
           },
           "custom": {},
           "mappings": [],
-          "max": 20,
+          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-purple",
+                "color": "green",
                 "value": null
               },
               {
                 "color": "#EAB839",
-                "value": 2.5
+                "value": 85
               },
               {
-                "color": "semi-dark-red",
-                "value": 5
-              },
-              {
-                "color": "dark-red",
-                "value": 10
+                "color": "red",
+                "value": 90
               }
             ]
           }
@@ -2548,15 +2413,21 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 12,
+        "h": 3,
+        "w": 6,
         "x": 0,
-        "y": 44
+        "y": 37
       },
-      "id": 44,
+      "id": 106,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
       "options": {
-        "displayMode": "gradient",
-        "orientation": "horizontal",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -2564,22 +2435,520 @@
           "fields": "",
           "values": false
         },
-        "showUnfilled": true
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
       "pluginVersion": "7.0.3",
       "targets": [
         {
-          "expr": "node_load1{instance=~\".*\"\r}",
+          "expr": "node_load1{instance=~\"$app1.*\"}",
+          "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
           "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$app1.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$app1.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$app1.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$app1.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$app1.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Load 1 - All servers",
-      "type": "bargauge"
+      "title": "APP 1 server",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 37
+      },
+      "id": 107,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$app2.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$app2.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$app2.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$app2.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$app2.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$app2.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "APP 2 server",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 40
+      },
+      "id": 100,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$dat1.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$dat1.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$dat1.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$dat1.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$dat1.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$dat1.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "DAT 1 server (elk)",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 40
+      },
+      "id": 101,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$dat2.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$dat2.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$dat2.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$dat2.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$dat2.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$dat2.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "DAT 2 server (mongo)",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 43
+      },
+      "id": 102,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$sto1.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$sto1.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$sto1.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$sto1.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$sto1.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$sto1.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "STO1 server",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 85
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 43
+      },
+      "id": 103,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "",
+          "url": ""
+        }
+      ],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\"$sto2.*\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Load",
+          "refId": "A"
+        },
+        {
+          "expr": "(((count(count(node_cpu_seconds_total{instance=~\"$sto2.*\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',instance=~\"$sto2.*\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{instance=~\"$sto2.*\"}) by (cpu))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "CPU Load",
+          "refId": "B"
+        },
+        {
+          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=~\"$sto2.*\"} * 100) / node_memory_MemTotal_bytes{instance=~\"$sto2.*\"})",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Mem %",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "STO2 server",
+      "transparent": true,
+      "type": "gauge"
     },
     {
       "aliasColors": {},
@@ -2675,6 +3044,358 @@
       }
     },
     {
+      "aliasColors": {
+        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.102.190:19100\",job=\"vitam-ITREC-via-consul\",mountpoint=\"/\",node=\"vitam-env-itrec-storage-1-01\",port=\"19100\"}": "dark-purple",
+        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.149:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-fsoffer-01\",port=\"19100\"}": "semi-dark-purple",
+        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.150:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-mongoffer-1-01\",port=\"19100\"}": "semi-dark-purple"
+      },
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 7,
+      "fillGradient": 8,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 41,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_avail_bytes{instance=~\"$sto1.*\",device!~'rootfs',device!~'tmpfs'}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": 5000000000,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk space available $server3",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "node_filesystem_avail_bytes{device=\"/dev/vda1\",fstype=\"xfs\",instance=\"172.18.103.149:19100\",job=\"vitam-R9-via-consul\",mountpoint=\"/\",node=\"vitam-env-r9-fsoffer-01\",port=\"19100\"}": "semi-dark-green"
+      },
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 6,
+      "fillGradient": 6,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 17,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "6.2.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_filesystem_avail_bytes{instance=~\"$sto2.*\",device!~'rootfs',device!~'tmpfs'}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": 5000000000,
+          "yaxis": "left"
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Disk space available $server4",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "decbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "decimals": null,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              },
+              {
+                "color": "semi-dark-orange",
+                "value": 50
+              },
+              {
+                "color": "dark-red",
+                "value": 90
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 51
+      },
+      "id": 84,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "rate(vitam_processing_worker_task_idle_duration_in_queue_seconds_sum{workflow=\"INGEST\"}[5m]) / rate(vitam_processing_worker_task_idle_duration_in_queue_seconds_count{workflow=\"INGEST\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{worker_family}}:{{step_name}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Temps moyens d'attente des tâches d'ingest dans la queue dans le distributeur",
+      "type": "bargauge"
+    },
+    {
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 20,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-purple",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 2.5
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 5
+              },
+              {
+                "color": "dark-red",
+                "value": 10
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 52
+      },
+      "id": 44,
+      "options": {
+        "displayMode": "gradient",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "node_load1{instance=~\".*\"\r}",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Load 1 - All servers",
+      "type": "bargauge"
+    },
+    {
       "datasource": "${DS_PROMETHEUS}",
       "fieldConfig": {
         "defaults": {
@@ -2705,7 +3426,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 51
+        "y": 59
       },
       "id": 24,
       "interval": "",
@@ -2769,7 +3490,7 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 51
+        "y": 59
       },
       "id": 26,
       "interval": "",
@@ -2834,7 +3555,7 @@
         "h": 4,
         "w": 4,
         "x": 8,
-        "y": 51
+        "y": 59
       },
       "id": 25,
       "links": [],
@@ -2866,219 +3587,6 @@
       "title": "Consul - Services passed",
       "transparent": true,
       "type": "gauge"
-    },
-    {
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {},
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-purple",
-                "value": null
-              },
-              {
-                "color": "semi-dark-orange",
-                "value": 50
-              },
-              {
-                "color": "dark-red",
-                "value": 90
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 51
-      },
-      "id": 84,
-      "options": {
-        "displayMode": "gradient",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "rate(vitam_processing_worker_task_idle_duration_in_queue_seconds_sum{workflow=\"INGEST\"}[5m]) / rate(vitam_processing_worker_task_idle_duration_in_queue_seconds_count{workflow=\"INGEST\"}[5m])",
-          "interval": "",
-          "legendFormat": "{{worker_family}}:{{step_name}}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Temps moyens d'attente des tâches d'ingest dans la queue dans le distributeur",
-      "type": "bargauge"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 1
-              },
-              {
-                "color": "#E24D42",
-                "value": 2
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 0,
-        "y": 55
-      },
-      "id": 27,
-      "links": [],
-      "options": {
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": false
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "count(consul_health_service_status{status=\"critical\"} == 1)",
-          "format": "time_series",
-          "instant": false,
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Consul - Services critical",
-      "transparent": true,
-      "type": "gauge"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorPostfix": false,
-      "colorPrefix": false,
-      "colorValue": true,
-      "colors": [
-        "#d44a3a",
-        "rgba(237, 129, 40, 0.89)",
-        "#73BF69"
-      ],
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 4,
-        "y": 55
-      },
-      "id": 31,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "consul_serf_lan_members",
-          "format": "time_series",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "3,2",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Consul Lan serf",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [],
-      "valueName": "current"
     },
     {
       "aliasColors": {},
@@ -3178,6 +3686,160 @@
       }
     },
     {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {},
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 1
+              },
+              {
+                "color": "#E24D42",
+                "value": 2
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 63
+      },
+      "id": 27,
+      "links": [],
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": false
+      },
+      "pluginVersion": "7.0.3",
+      "targets": [
+        {
+          "expr": "count(consul_health_service_status{status=\"critical\"} == 1)",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Consul - Services critical",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorPostfix": false,
+      "colorPrefix": false,
+      "colorValue": true,
+      "colors": [
+        "#d44a3a",
+        "rgba(237, 129, 40, 0.89)",
+        "#73BF69"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 63
+      },
+      "id": 31,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "consul_serf_lan_members",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "3,2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Consul Lan serf",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [],
+      "valueName": "current"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -3272,84 +3934,6 @@
       }
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {},
-          "mappings": [],
-          "max": 100,
-          "min": 0,
-          "noValue": "0",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 12,
-        "x": 12,
-        "y": 69
-      },
-      "id": 70,
-      "options": {
-        "displayMode": "lcd",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true
-      },
-      "pluginVersion": "7.0.3",
-      "targets": [
-        {
-          "expr": "vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"KO\",workflow=\"INGEST\"}",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 10,
-          "legendFormat": "INGEST completed KO",
-          "refId": "A"
-        },
-        {
-          "expr": "vitam_processing_workflow_operation_total{state=\"COMPLETED\",status=\"KO\",workflow=\"MASS_UPDATE\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "MASS_UPDATE completed KO",
-          "refId": "B"
-        },
-        {
-          "expr": "vitam_processing_workflow_operation_total{state=\"PAUSE\",status=\"FATAL\",workflow=\"INGEST\"}",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "INGEST pause FATAL",
-          "refId": "C"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Workflow KO et Pause Fatal",
-      "type": "bargauge"
-    },
-    {
       "cacheTimeout": null,
       "datasource": "$Datasource",
       "description": "",
@@ -3396,7 +3980,7 @@
         "h": 6,
         "w": 10,
         "x": 13,
-        "y": 72
+        "y": 69
       },
       "id": 53,
       "links": [],
@@ -3471,109 +4055,163 @@
       },
       {
         "current": {
-          "value": "${VAR_SERVER0}",
-          "text": "${VAR_SERVER0}"
+          "value": "${VAR_ACC}",
+          "text": "${VAR_ACC}"
         },
         "hide": 2,
         "label": "acc",
-        "name": "server0",
+        "name": "acc",
         "options": [
           {
-            "value": "${VAR_SERVER0}",
-            "text": "${VAR_SERVER0}"
+            "value": "${VAR_ACC}",
+            "text": "${VAR_ACC}"
           }
         ],
-        "query": "${VAR_SERVER0}",
+        "query": "${VAR_ACC}",
         "skipUrlSync": false,
         "type": "constant"
       },
       {
         "current": {
-          "value": "${VAR_SERVER1}",
-          "text": "${VAR_SERVER1}"
+          "value": "${VAR_APP1}",
+          "text": "${VAR_APP1}"
         },
         "hide": 2,
-        "label": "server1",
-        "name": "server1",
+        "label": "app1",
+        "name": "app1",
         "options": [
           {
-            "value": "${VAR_SERVER1}",
-            "text": "${VAR_SERVER1}"
+            "value": "${VAR_APP1}",
+            "text": "${VAR_APP1}"
           }
         ],
-        "query": "${VAR_SERVER1}",
+        "query": "${VAR_APP1}",
         "skipUrlSync": false,
         "type": "constant"
       },
       {
         "current": {
-          "value": "${VAR_SERVER2}",
-          "text": "${VAR_SERVER2}"
+          "value": "${VAR_APP2}",
+          "text": "${VAR_APP2}"
         },
         "hide": 2,
-        "label": "server2",
-        "name": "server2",
+        "label": "app2",
+        "name": "app2",
         "options": [
           {
-            "value": "${VAR_SERVER2}",
-            "text": "${VAR_SERVER2}"
+            "value": "${VAR_APP2}",
+            "text": "${VAR_APP2}"
           }
         ],
-        "query": "${VAR_SERVER2}",
+        "query": "${VAR_APP2}",
         "skipUrlSync": false,
         "type": "constant"
       },
       {
         "current": {
-          "value": "${VAR_SERVER3}",
-          "text": "${VAR_SERVER3}"
+          "value": "${VAR_DAT1}",
+          "text": "${VAR_DAT1}"
         },
         "hide": 2,
-        "label": "server3",
-        "name": "server3",
+        "label": "dat1",
+        "name": "dat1",
         "options": [
           {
-            "value": "${VAR_SERVER3}",
-            "text": "${VAR_SERVER3}"
+            "value": "${VAR_DAT1}",
+            "text": "${VAR_DAT1}"
           }
         ],
-        "query": "${VAR_SERVER3}",
+        "query": "${VAR_DAT1}",
         "skipUrlSync": false,
         "type": "constant"
       },
       {
         "current": {
-          "value": "${VAR_SERVER4}",
-          "text": "${VAR_SERVER4}"
+          "value": "${VAR_DAT2}",
+          "text": "${VAR_DAT2}"
         },
         "hide": 2,
-        "label": "server4",
-        "name": "server4",
+        "label": "dat2",
+        "name": "dat2",
         "options": [
           {
-            "value": "${VAR_SERVER4}",
-            "text": "${VAR_SERVER4}"
+            "value": "${VAR_DAT2}",
+            "text": "${VAR_DAT2}"
           }
         ],
-        "query": "${VAR_SERVER4}",
+        "query": "${VAR_DAT2}",
         "skipUrlSync": false,
         "type": "constant"
       },
       {
         "current": {
-          "value": "${VAR_SERVER5}",
-          "text": "${VAR_SERVER5}"
+          "value": "${VAR_EXP}",
+          "text": "${VAR_EXP}"
         },
         "hide": 2,
-        "label": "server5",
-        "name": "server5",
+        "label": "exp",
+        "name": "exp",
         "options": [
           {
-            "value": "${VAR_SERVER5}",
-            "text": "${VAR_SERVER5}"
+            "value": "${VAR_EXP}",
+            "text": "${VAR_EXP}"
           }
         ],
-        "query": "${VAR_SERVER5}",
+        "query": "${VAR_EXP}",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "current": {
+          "value": "${VAR_STO1}",
+          "text": "${VAR_STO1}"
+        },
+        "hide": 2,
+        "label": "sto1",
+        "name": "sto1",
+        "options": [
+          {
+            "value": "${VAR_STO1}",
+            "text": "${VAR_STO1}"
+          }
+        ],
+        "query": "${VAR_STO1}",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "current": {
+          "value": "${VAR_STO2}",
+          "text": "${VAR_STO2}"
+        },
+        "hide": 2,
+        "label": "sto2",
+        "name": "sto2",
+        "options": [
+          {
+            "value": "${VAR_STO2}",
+            "text": "${VAR_STO2}"
+          }
+        ],
+        "query": "${VAR_STO2}",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
+        "current": {
+          "value": "${VAR_WORKSPACE}",
+          "text": "${VAR_WORKSPACE}"
+        },
+        "hide": 2,
+        "label": "workspace",
+        "name": "workspace",
+        "options": [
+          {
+            "value": "${VAR_WORKSPACE}",
+            "text": "${VAR_WORKSPACE}"
+          }
+        ],
+        "query": "${VAR_WORKSPACE}",
         "skipUrlSync": false,
         "type": "constant"
       }
@@ -3609,6 +4247,6 @@
   },
   "timezone": "",
   "title": "VITAM standard dashboard",
-  "uid": "testitrec",
-  "version": 27
+  "uid": "vitam_standard_dashboard",
+  "version": 21
 }
